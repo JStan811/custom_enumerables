@@ -25,5 +25,18 @@ module Enumerable
   end
 
   def my_all?
+    boolean_to_return = true
+    for i in 0..(self.length - 1)
+      boolean_to_return = false if yield(self[i]) == false || yield(self[i]) == nil
+    end
+    boolean_to_return
+  end
+
+  def my_any?
+    boolean_to_return = false
+    for i in 0..(self.length - 1)
+      boolean_to_return = true if yield(self[i]) == true
+    end
+    boolean_to_return
   end
 end
