@@ -15,4 +15,15 @@ module Enumerable
     end
     self
   end
+
+  def my_select
+    result_array = []
+    for i in 0..(self.length - 1)
+      result_array << self[i] if yield(self[i])
+    end
+    result_array
+  end
+
+  def my_all?
+  end
 end

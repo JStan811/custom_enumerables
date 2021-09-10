@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'enumerable'
+require_relative '../enumerable'
 
 puts 'each_with_index vs. my_each_with_index'
 numbers = [1, 2, 3, 4, 5]
