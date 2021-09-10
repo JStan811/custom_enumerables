@@ -2,7 +2,7 @@
 
 require_relative '../enumerable'
 
-puts 'all? vs. my_all?'
+puts 'any? vs. my_any?'
 numbers = [1, 2, 3, 4, 5]
 puts 'Original:'
 puts (numbers.any? { |item| item < 6 })
