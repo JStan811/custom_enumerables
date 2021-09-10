@@ -61,15 +61,43 @@ module Enumerable
     count_value
   end
 
-  def my_map
-    result_array = []
-    for i in 0..(self.length - 1)
-      result_array << yield(self[i])
+  # def my_map(proc = nil)
+  #   result_array = []
+  #   for i in 0..(self.length - 1)
+  #     result_array << yield(self[i])
+  #   end
+  #   result_array
+  # end
+
+  def my_inject(memo = self[0])
+    if memo == self[0]
+      for i in 1..(self.length - 1)
+        memo = yield(memo, self[i])
+      end
+    else
+      for i in 0..(self.length - 1)
+        memo = yield(memo, self[i])
+      end
     end
-    result_array
+    memo
   end
 
-  def my_inject
+  def my_map(proc = nil)
+    if !(proc.nil?) && proc.class == Proc
+      result_array = []
+      for i in 0..(self.length - 1)
+        result_array << proc.call(self[i])
+      end
+      return result_array
+    elsif block_given?
+      result_array = []
+      for i in 0..(self.length - 1)
+        result_array << yield(self[i])
+      end
+      result_array
+    else
+      'Neither proc or block given.'
+    end
   end
 end
 # rubocop:enable Style/For
