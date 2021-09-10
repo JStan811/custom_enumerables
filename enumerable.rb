@@ -75,18 +75,17 @@ module Enumerable
   end
 
   def my_map(proc = nil)
+    result_array = []
     if !(proc.nil?) && proc.class == Proc
-      result_array = []
       for i in 0..(self.length - 1)
         result_array << proc.call(self[i])
       end
       return result_array
     elsif block_given?
-      result_array = []
       for i in 0..(self.length - 1)
         result_array << yield(self[i])
       end
-      result_array
+      return result_array
     else
       'Neither proc or block given.'
     end
