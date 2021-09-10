@@ -61,14 +61,6 @@ module Enumerable
     count_value
   end
 
-  # def my_map(proc = nil)
-  #   result_array = []
-  #   for i in 0..(self.length - 1)
-  #     result_array << yield(self[i])
-  #   end
-  #   result_array
-  # end
-
   def my_inject(memo = self[0])
     if memo == self[0]
       for i in 1..(self.length - 1)
